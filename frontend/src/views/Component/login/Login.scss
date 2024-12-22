@@ -1,0 +1,69 @@
+.LoginContainer{
+    margin: 35px;
+}
+
+
+.close-button{
+    margin: -20px;
+
+    margin-left: 95%;
+}
+
+
+h1{
+    font-size: 32px;
+}
+
+#box{
+    padding: 0px;
+    padding-top: 10px ;
+    border-radius: 3%;
+}
+
+h4{
+    color: black;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    
+}
+
+.checkbox{
+    margin-left: 16px;
+    margin-top: 20px;
+}
+
+.button{
+    margin-left: 15px;
+    width: 350px;
+    margin-top: 7px;
+}
+
+
+h5{
+    color: rgba(0, 0, 0, 0.7);
+    padding-left: 15px;
+    height: 55px;
+    padding-bottom: -5px;
+    margin: 0px;
+    margin-top:20px ;
+    background-color: #f3f9fb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.link{
+    color: var(--Special-Color);
+    
+
+}
+.link:hover{
+    color: var(--Highlight-Color);
+}
+
+#eye{
+    background-color: transparent;
+}

@@ -1,16 +1,27 @@
 import './App.css';
-import { useState } from 'react';
-import axios from 'axios';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Register } from './views/User/Register.jsx';
-import { Login } from './views/User/Login.jsx';
+import { Routes, Route } from 'react-router-dom';
+import { Register } from './views/Component/Register.jsx';
+
+//import { Login } from './views/Component/Login.jsx';
+import {Login} from './views/Component/login/Login.jsx'
+import { ChakraProvider } from '@chakra-ui/react';
+import { Provider } from "../src/components/ui/provider"
+
+
+
+
 function App() {
   return(
+    <Provider >
+      <Routes>
+        <Route element={<Sign />} path='/sign'>
+          <Route element={<Register/>} path='/Register' />
+          <Route  element={<Login/>} index/>
+        </Route>
+      </Routes>
+    </Provider>
+      
     
-    <Routes>
-      <Route element={<Register/>} path='/Register' />
-      <Route path='/Login' element={<Login/>}/>
-    </Routes>
   )
   
 }

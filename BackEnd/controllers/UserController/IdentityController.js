@@ -1,8 +1,9 @@
-import { firebaseapp } from '../../FireBase/firebaseConfig.js';
+import { firebaseapp, database } from '../../FireBase/firebaseConfig.js';
 import { getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword } from 'firebase/auth';
-import { GoogleAuthProvider } from 'firebase/auth/web-extension';
+import { collection, addDoc } from 'firebase/firestore';
 
 let auth = getAuth();
+const collectionRef = collection(database, 'users');
 export const Register= (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
