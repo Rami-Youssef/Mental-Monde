@@ -1,0 +1,67 @@
+// header.scss
+
+.header-container {
+    background: linear-gradient(to right, #3B82F6, #7C3AED); /* blue-500 to purple-600 */    padding: 0 1rem; // Padding on left and right of the header
+    color: white;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  // Ensure the content in the header is vertically centered
+    height: 64px;
+    position: relative;
+    padding: 0 20px;  // Added padding to create space between content and edges
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    margin-right: auto;  // Ensure logo stays on the left with space
+    padding-left: 20px;  // Padding added to ensure logo is not touching the left
+  }
+  
+  .logo-img {
+    width: 100px; // Adjust logo size as needed
+    height: 100px;
+    margin-right: 8px;
+  }
+  
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  
+  .nav-link {
+    color: white;
+    padding: 8px 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s;  // Transition only on text color
+  
+    &:hover {
+      color: #FACC15; // Text turns yellow on hover
+    }
+  }
+  
+  .sign-in {
+    padding-right: 20px;  // Added padding to ensure sign-in button is not touching the right edge
+    .sign-in-link {
+      background-color: transparent; // Remove background color
+      color: white;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-decoration: none;
+      border: 2px solid #FACC15; // Add border to give it a yellow outline
+      transition: color 0.3s, border-color 0.3s;
+  
+      &:hover {
+        color: #FACC15; // Text turns yellow on hover
+        border-color: #FACC15; // Border turns yellow on hover
+      }
+    }
+  }
+  

@@ -1,0 +1,52 @@
+.home-container {
+    background: linear-gradient(to right, #3B82F6, #7C3AED);  // Blue to purple gradient
+    color: white;
+    padding: 4rem 2rem; // Padding around the section
+  }
+  
+  .home-content {
+    display: flex;
+    flex-direction: column-reverse;  // Stack elements on small screens
+    align-items: center;
+    justify-content: center;
+  
+    @media (min-width: 768px) {
+      flex-direction: row;  // Side by side on medium screens and up
+    }
+  }
+  
+  .home-image {
+    flex: 1;
+    margin-bottom: 1rem;
+  
+    @media (min-width: 768px) {
+      margin-bottom: 0;  // Remove margin on larger screens
+    }
+  }
+  
+  .home-image-img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+  
+  .home-text {
+    flex: 1;
+    text-align: center;
+    
+    @media (min-width: 768px) {
+      text-align: left;  // Align text to left on larger screens
+    }
+  }
+  
+  .home-header {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .home-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  

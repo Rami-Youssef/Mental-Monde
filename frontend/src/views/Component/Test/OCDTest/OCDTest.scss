@@ -1,0 +1,126 @@
+/* General styles for the page */
+.depression-test-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #EAB308; /* New background color */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .depression-test-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 800px; /* Increase the max-width to make the card wider */
+    width: 100%;
+    text-align: center;
+  }
+  
+  .depression-test-header {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #A16207; /* Header color */
+  }
+  
+  .depression-test-question {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+    text-align: left;
+    font-weight: 500;
+  }
+  
+  .radio-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap; /* Allow radio buttons to wrap in case of narrow screens */
+  }
+  
+  .radio-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    padding: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100px; /* Fixed width for uniform size */
+    border: 2px solid #A16207; /* Border with the same color as header */
+  }
+  
+  .radio-card:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .radio-card input {
+    margin-top: 10px; /* Move the radio button down */
+    transform: scale(1.2); /* Increase the size of the radio button */
+    accent-color: #A16207; /* Change radio button color to match header */
+  }
+  
+  .radio-card.checked {
+    background-color: #A16207;
+    border: 2px solid #A16207;
+  }
+  
+  .radio-card-label {
+    margin-bottom: 5px; /* Add space between the label and radio button */
+    color: #444; /* Darker text for better contrast */
+    font-weight: 600;
+  }
+  
+  .submit-button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    background-color: #A16207; /* Matching submit button color */
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
+    border: none;
+  }
+  
+  .submit-button:hover {
+    background-color: #8c5106;
+  }
+  
+  .result-message {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #444;
+    font-weight: 500;
+  }
+  
+  /* Media queries for better responsiveness */
+  @media (max-width: 768px) {
+    .depression-test-card {
+      padding: 20px;
+      max-width: 100%;  /* Full width on smaller screens */
+    }
+  
+    .depression-test-header {
+      font-size: 1.8rem;
+    }
+  
+    .radio-card {
+      font-size: 0.95rem;
+      width: 80px; /* Slightly reduce width on smaller screens */
+    }
+  
+    .submit-button {
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+  }
+  

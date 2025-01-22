@@ -27,13 +27,11 @@ export const Register= (req, res) => {
 
    if (email && password) {
     try {
-      // Await the result of signInWithEmailAndPassword
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       
-      // On success
       res.status(200).json({ message: JSON.stringify(userCredential)   });
     } catch (error) {
-      // Handle specific Firebase errors
+
       res.json({message: "invalid email/password"});
       
       

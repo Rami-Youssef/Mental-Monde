@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react'
-import './Login.scss'
+import axios from 'axios';
+import './Register.scss';
 import GWImage from "./GW.png";
 import GDImage from "./GD.png";
 
-import {Input,Image,Text, HStack,Group, Box, Button, Heading} from "@chakra-ui/react"
+import {Input,Image, HStack,Group, Box, Button, Heading,Text} from "@chakra-ui/react"
 import {Link} from "react-router-dom"
 import { CloseButton } from "../../../components/ui/close-button"
 import { InputGroup } from "../../../components/ui/input-group"
 import { useState } from "react";
-import axios, { Axios } from "axios";
+import  { Axios } from "axios";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { firebaseapp } from "../../../FireBase/firebaseConfig";
 
@@ -20,12 +21,12 @@ import { useNavigate } from 'react-router-dom'
 
 
 
-export  function Login() {
-  const navigate = useNavigate();
+export  function Register() {
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [Message, setMessage] = useState('');
-  const [image, setImage] = useState('');
+  const [Message, setMessage] = useState('nothing');
+  const [image, setImage] = useState('nothing');
   const provider = new GoogleAuthProvider();
   const auth = getAuth(firebaseapp)
 
@@ -36,41 +37,21 @@ export  function Login() {
 
   const handleClick = () => setShow(!show)
 
-  //google auth
-  const GoogleAuth = async ()=>{
-    let result = await signInWithPopup(auth,provider);
-    console.log(result);
-    const photoURL = result.user.photoURL;
-    setImage(photoURL)
-    setMessage(result.user.accessToken)
-    
 
-}
 
-  //sys de navigation
-useEffect(() => {
-  if (Message && Message !== "invalid email/password") {
-      navigate('/Home'); 
-  }
-}, [Message]); 
-
-  //auth
 const HandleSubmit = async (e)=>{
     e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:9000/api/user/Register', {
+        email,
+        password,
+      });
+      setMessage(response.data.message);
+    } catch (error) {
+      console.error('Error:', error);
+      setMessage(error.response?.data?.message || 'Something went wrong');
+    }
 
-    try{
-        const result = await axios.post('http://localhost:9000/api/user/Login',
-            {email, password})
-        setMessage(result.data.message);
-        
-        console.log(Message);
-    }
-    catch(error){
-        
-            console.error('Error:', error);
-            setMessage(error.response?.data?.message || 'Something went wrong');
-          
-    }
 }
 
    
@@ -78,7 +59,7 @@ const HandleSubmit = async (e)=>{
   return (
     <div className='LoginContainer'>
       
-      <Heading as='h1' color='teal.600'>LOG IN</Heading>
+      <Heading as='h1' color='teal.600'>Sign Up</Heading>
       
       <Box p={5} shadow='md' id='box'> 
       <form onSubmit={HandleSubmit}> 
@@ -96,6 +77,8 @@ const HandleSubmit = async (e)=>{
           onChange={(e)=>{setEmail(e.target.value)}}
         />
 
+        
+
         <h4>Password</h4>
         <Group attached size='md'  marginLeft={"15px"} marginBottom={"20px"}  variant='outline'  width="88%" >
             <Input required
@@ -112,21 +95,10 @@ const HandleSubmit = async (e)=>{
         </Group>
       <HStack width="full" gap="10" justifyContent='space-evenly'>
         <Button type='submit' className='button'  backgroundColor={'teal'} colorScheme='teal' color={"white"} variant="solid">Validate</Button>
-        <Button type='button' onClick={GoogleAuth}>
-          <Image 
-          src={GWImage}  
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          alt='google'
-          onMouseOver={(e) => (e.currentTarget.src = GDImage)}
-        onMouseOut={(e) => (e.currentTarget.src = GWImage)}
-          />
-        </Button>
       </HStack>
-      <Text color='red'>{Message}</Text>
-
+      <Text color="red.500">{Message}</Text>
       </form>
-      <h5>N'avez-vous pas un compte ? <Link className='link' to="/Register">Inscrivez-vous ici</Link></h5>
-      <h5>Voulez-vous postuler en tant que docteur ? <Link className='link' to="/RegisterDoctor">Postulez ici</Link></h5>
+
       </Box>
 
     </div>
